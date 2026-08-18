@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Less Than Full Time Training</title>
+  <style>
+    :root {
+      --nhs-blue: #005eb8;
+      --nhs-dark-blue: #003087;
+      --nhs-light-blue: #d8efff;
+      --nhs-mid-grey: #d8dde0;
+      --nhs-pale-grey: #f0f4f5;
+      --nhs-text: #212b32;
+      --nhs-green: #007f3b;
+      --nhs-link: #005eb8;
+      --nhs-white: #ffffff;
+      --shadow: 0 6px 18px rgba(33, 43, 50, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--nhs-text);
+      background: var(--nhs-white);
+      line-height: 1.6;
+    }
+
+    a { color: var(--nhs-link); }
+    a:hover { text-decoration-thickness: 2px; }
+
+    .top-strip {
+      background: var(--nhs-dark-blue);
+      color: var(--nhs-white);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .top-strip .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      background: #fff;
+      border-bottom: 1px solid var(--nhs-mid-grey);
+    }
+
+    .brand-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-mark .logo {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--nhs-blue), #0a67c3);
+      border-radius: 10px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-mark .logo::before,
+    .brand-mark .logo::after {
+      content: "";
+      position: absolute;
+      inset: 14px 12px 14px 12px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.16);
+      transform: skewY(-12deg);
+    }
+
+    .brand-mark .logo::after {
+      inset: 14px 22px 14px 22px;
+      background: rgba(255,255,255,0.8);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text .small {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--nhs-dark-blue);
+    }
+
+    .brand-text .large {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--nhs-blue);
+    }
+
+    .nav {
+      background: var(--nhs-blue);
+      color: var(--nhs-white);
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-list a {
+      color: var(--nhs-white);
+      text-decoration: none;
+      display: inline-block;
+      padding: 1rem 1.2rem;
+      font-weight: 700;
+    }
+
+    .nav-list a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .breadcrumb {
+      background: var(--nhs-pale-grey);
+      border-bottom: 1px solid var(--nhs-mid-grey);
+    }
+
+    .breadcrumb ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.9rem 0;
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .breadcrumb li + li::before {
+      content: ">";
+      margin-right: 0.5rem;
+      color: #6b7780;
+    }
+
+    .page-header {
+      background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+      border-bottom: 1px solid var(--nhs-mid-grey);
+    }
+
+    .page-header h1 {
+      margin: 0;
+      padding: 2rem 0 1.4rem;
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      line-height: 1.1;
+      color: var(--nhs-text);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(220px, 0.8fr);
+      gap: 2rem;
+      padding: 2rem 0 3rem;
+    }
+
+    .content {
+      font-size: 1.1rem;
+    }
+
+    .lead {
+      font-size: 1.4rem;
+      line-height: 1.45;
+      margin: 0 0 1.4rem;
+      font-weight: 700;
+      color: var(--nhs-text);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 2.2rem 0 1rem;
+      color: var(--nhs-dark-blue);
+    }
+
+    p {
+      margin: 0 0 1.25rem;
+    }
+
+    .aside-card {
+      background: var(--nhs-pale-grey);
+      border: 1px solid var(--nhs-mid-grey);
+      border-top: 6px solid var(--nhs-blue);
+      padding: 1.2rem 1.1rem;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+
+    .aside-card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      color: var(--nhs-dark-blue);
+    }
+
+    .aside-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .aside-card li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--nhs-mid-grey);
+    }
+
+    .aside-card li:last-child { border-bottom: none; }
+
+    .review {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--nhs-mid-grey);
+      color: #425563;
+      font-size: 0.92rem;
+    }
+
+    .footer {
+      background: #1f2a31;
+      color: var(--nhs-white);
+      padding: 2rem 0 1.5rem;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 0.75rem 1rem;
+      margin: 0 0 1.4rem;
+      padding: 0;
+    }
+
+    .footer-list a {
+      color: var(--nhs-white);
+      text-decoration: none;
+    }
+
+    .footer-list a:hover { text-decoration: underline; }
+
+    .copyright {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .brand-inner {
+        align-items: flex-start;
+        padding: 1rem 0;
+      }
+
+      .brand-text .large {
+        font-size: 1.45rem;
+      }
+
+      .footer-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container">
+      <span>Medical Hub</span>
+      <span>Workforce, training and education</span>
+    </div>
+  </div>
+
+  <header class="brand">
+    <div class="container brand-inner">
+      <div class="brand-mark">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <span class="small">Workforce, training and education</span>
+          <span class="large">Medical Hub</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="#">Training recruitment</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Medical Training Recruitment</a></li>
+        <li><a href="#">Medical Specialty Recruitment</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Less Than Full Time Training</h1>
+    </div>
+  </div>
+
+  <main class="container layout" id="maincontent">
+    <article class="content">
+      <p class="lead">If you are applying to enter specialty training but are unable to train full time, you may apply for less than full time training (LTFT).</p>
+
+      <p>Providing you can show that training on a full time basis would not be practical for you for well-founded reasons you may apply for less than full time training (LTFT). Well-founded reasons may include, for example, disability, ill health, caring responsibilities, religious commitments and unique opportunities for personal or professional development.</p>
+
+      <p>Less than full time training must meet the same requirements as full-time training, except that there will be fewer hours of work per week.</p>
+
+      <p>You will need to secure a full-time post in open competition before you can make an application to work LTFT. You should apply for eligibility through your current NHS England local office/devolved nation Deanery ahead of this and indicate your desire to work less than full time on your application form.</p>
+
+      <p>If you are, or will be, on a Tier 2 visa, your pro rata salary must meet the minimum salary threshold for Tier 2. Please contact the Lead Recruiter if you are planning to apply for LTFT training and will require a Tier 2 visa.</p>
+
+      <h2>Less Than Full Time Training Recruitment Pilot</h2>
+
+      <p>A less than full time recruitment pilot will be be run in the 2026 specialty recruitment process.</p>
+
+      <p>Participating specialties and regions will advertise posts as less than full time. Those appointed into these pilot posts will be able to train LTFT without needing to go through the normal application and approval process, giving successful applicants certainty on their training rotation earlier in the process.</p>
+
+      <div class="review">
+        <p>Page last reviewed: 4 June 2024<br />Next review due: 4 June 2025</p>
+      </div>
+    </article>
+
+    <aside class="aside-card" aria-label="Related information">
+      <h3>Related information</h3>
+      <ul>
+        <li><a href="#">Special Circumstances</a></li>
+        <li><a href="#">Overseas applicants</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <ul class="footer-list">
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">Accessibility statement</a></li>
+        <li><a href="#">Freedom of information</a></li>
+        <li><a href="#">Privacy notice</a></li>
+        <li><a href="#">Terms and conditions</a></li>
+        <li><a href="#">Contact us</a></li>
+      </ul>
+      <p class="copyright">© Crown copyright</p>
+    </div>
+  </footer>
+</body>
+</html>
